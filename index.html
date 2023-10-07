@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Keycode</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+      body {
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+        width: 100vw;
+      }
+      .container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+      }
+      #keyDisplay {
+        font-size: 10em;
+      }
+      #helpText {
+        font-weight: bold;
+      }
+      @media only screen and max-width(600px) {
+        #keyDisplay {
+          font-size: 3em;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <p id="helpText">Enter a key to view keycode</p>
+      <h1 id="keyDisplay"></h1>
+    </div>
+    <script>
+      document.addEventListener("keydown", handleKeyDown);
+      let keyDisplay = document.getElementById("keyDisplay");
+      let helpText = document.getElementById("helpText");
+
+      function handleKeyDown(e) {
+        helpText.style.display = "none";
+        keyDisplay.innerText = e.key;
+      }
+    </script>
+  </body>
+</html>
