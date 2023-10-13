@@ -23,7 +23,14 @@
         height: 100%;
       }
       #keyDisplay {
-        font-size: 10em;
+        font-size: 10vh;
+        background: black;
+        color: white;
+        padding: 10px 50px;
+        box-shadow: 5px 5px lightgray;
+        min-width: 8rem;
+        min-height: 4rem;
+        display: none;
       }
       #helpText {
         font-weight: bold;
@@ -41,13 +48,14 @@
       <h1 id="keyDisplay"></h1>
     </div>
     <script>
-      document.addEventListener("keydown", handleKeyDown);
+      window.addEventListener("keydown", handleKeyDown);
       let keyDisplay = document.getElementById("keyDisplay");
       let helpText = document.getElementById("helpText");
 
       function handleKeyDown(e) {
         helpText.style.display = "none";
         keyDisplay.innerText = e.key;
+        keyDisplay.style.display = "block";
       }
     </script>
   </body>
