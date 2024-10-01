@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <title>Keycode</title>
@@ -31,11 +31,12 @@
         min-width: 8rem;
         min-height: 4rem;
         display: none;
+        cursor: pointer;
       }
       #helpText {
         font-weight: bold;
       }
-      @media only screen and max-width(600px) {
+      @media only screen and (max-width: 600px) {
         #keyDisplay {
           font-size: 3em;
         }
@@ -51,12 +52,27 @@
       window.addEventListener("keydown", handleKeyDown);
       let keyDisplay = document.getElementById("keyDisplay");
       let helpText = document.getElementById("helpText");
+      let str = "Nothing";
 
       function handleKeyDown(e) {
         helpText.style.display = "none";
         keyDisplay.innerText = e.key;
         keyDisplay.style.display = "block";
+        str=e.keyCode;
       }
+      var copyTextareaBtn = document.querySelector("#keyDisplay");
+      var copyText = document.getElementById("keyDisplay").innerText;
+
+      copyTextareaBtn.addEventListener("click", function (event) {
+        navigator.clipboard
+          .writeText(str)
+          .then(() => {
+            console.log("Copied the text: " + str);
+          })
+          .catch((err) => {
+            console.log("Something went wrong", err);
+          });
+      });
     </script>
   </body>
 </html>
